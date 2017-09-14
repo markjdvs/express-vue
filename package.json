@@ -18,10 +18,8 @@
   },
   "homepage": "https://github.com/markjdvs/recombix-test#readme",
   "dependencies": {
+    "body-parser": "^1.18.1",
     "express": "^4.15.4",
     "mongoose": "^4.11.11"
-  },
-  "devDependencies": {
-    "nodemon": "^1.12.0"
   }
 }
