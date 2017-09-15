@@ -1,22 +1,31 @@
 <template>
   <div>
     <h1>Add an Event</h1>
+
     <input
       type="text"
       v-model="event.title"
       placeholder="Event Title" />
+
+    <label>
+      When does the event start?
+      <input
+        type="date"
+        v-model="event.dateFrom" />
+    </label>
+
+    <label>
+      When does the event end?
     <input
       type="date"
-      v-model="event.dateFrom"
-      placeholder="When does the event start?" />
-    <input
-      type="date"
-      v-model="event.dateTo"
-      placeholder="When does the event end?" />
+      v-model="event.dateTo" />
+    </label>
+
     <input
       type="text"
       v-model="event.location"
       placeholder="Event Location" />
+
     <textarea
       type="text"
       v-model="event.description"
@@ -27,6 +36,8 @@
 </template>
 
 <script>
+  import EventsService from '../services/EventsService';
+
   export default {
     data () {
       return {
@@ -41,15 +52,23 @@
       }
     },
     methods: {
-      addEvent: function() {
-        this.events.push(this.event);
-        this.event = {
-          title: '',
-          dateFrom: '',
-          dateTo: '',
-          location: '',
-          description: ''
-        };
+      async addEvent () {
+        try {
+          await EventsService.post(this.event);
+          this.$router.push({
+            name: 'events'
+          })
+        } catch (err) {
+          console.log(err);
+        }
+        // this.events.push(this.event);
+        // this.event = {
+        //   title: '',
+        //   dateFrom: '',
+        //   dateTo: '',
+        //   location: '',
+        //   description: ''
+        // };
       }
     }
   }

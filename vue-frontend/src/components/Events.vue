@@ -1,6 +1,11 @@
 <template>
   <div>
-    <a href="#" v-for="event in events">
+    <router-link :to="{name: 'eventsNew'}">
+      <button>
+        +
+      </button>
+    </router-link>
+    <a href="" v-for="event in events">
       <h4>
         {{ event.title }}
       </h4>

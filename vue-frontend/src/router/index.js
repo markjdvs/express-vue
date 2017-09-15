@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Hello from '../components/Hello.vue';
 import EventsNew from '../components/EventsNew.vue';
-import EventsIndex from '../components/EventsIndex.vue';
+import Events from '../components/Events.vue';
 
 Vue.use(VueRouter);
 
@@ -14,9 +14,9 @@ export default new VueRouter({
       component: Hello
     },
     {
-      name: 'eventsIndex',
+      name: 'events',
       path: '/events',
-      component: EventsIndex
+      component: Events
     },
     {
       name: 'eventsNew',
