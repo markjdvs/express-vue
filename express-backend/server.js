@@ -14,6 +14,6 @@ mongoose.connect(dbURI);
 if(env !== 'test') app.use(morgan('dev'));
 app.use(bodyParser.json());
 
-app.use(routes);
+app.use('/api', routes);
 
 app.listen(port, () => console.log(`Express is listening on port ${port}`));
