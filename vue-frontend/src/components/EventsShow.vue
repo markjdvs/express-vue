@@ -49,5 +49,11 @@
 </script>
 
 <style scoped>
-
+  button {
+    font-size: 18px;
+    color: #fff;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #90d9bf;
+  }
 </style>

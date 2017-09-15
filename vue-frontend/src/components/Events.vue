@@ -7,11 +7,15 @@
       </button>
     </router-link>
 
-    <div class="eventCard container" v-for="event in events" :key="event.id">
+    <div class="eventCard container" v-bind:class="{}" v-for="event in events" :key="event.id">
 
       <h4>
         {{ event.title }}
       </h4>
+
+      <p>
+        {{ event.dateFrom | moment }} - {{ event.dateTo | moment }}
+      </p>
 
       <p v-if="event.description">{{ event.description }}</p>
 
@@ -30,8 +34,9 @@
 </template>
 
 <script>
-  // import Api from '../services/Api';
   import EventsService from '../services/EventsService';
+  import moment from 'moment';
+
 
   export default {
     data () {
@@ -43,18 +48,27 @@
     },
     async mounted () {
       this.events = (await EventsService.index()).data;
+    },
+    filters: {
+      moment: function (date) {
+        return moment(date).format('MMMM Do YYYY');
+      }
     }
   }
 </script>
 
 <style scoped>
-  .addEventNav {
+  button {
+    font-size: 18px;
     color: #fff;
-    font-size: 25px;
-    width: 1.5em;
-    height: 1.5em;
-    border-radius: 50%;
-    background: #7dd2b4;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #90d9bf;
+  }
+
+  .addEventNav {
+    border-radius: 100%;
+    width: 2.5em;
   }
 
   .eventCard {
@@ -62,13 +76,13 @@
     border-radius: 10px;
     padding: 10px;
     &.past {
-
+      background-color: red;
     }
     &.soon {
-
+      background-color: green;
     }
     &.future {
-
+      background-color: grey;
     }
   }
 </style>

@@ -42,5 +42,13 @@ li {
 
 a {
   color: #42b983;
+  font-size: 18px;
+  text-decoration: none;
 }
+
+nav {
+  padding: 10px 0 10px 30px;
+}
+
+
 </style>
