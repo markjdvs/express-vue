@@ -1,6 +1,8 @@
 <template>
   <div>
-    {{ event.title }}
+    <h4>
+      {{ event.title }}
+    </h4>
     <p>
       {{ event.dateFrom | moment }} - {{ event.dateTo | moment }}
     </p>
