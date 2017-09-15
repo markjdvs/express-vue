@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { dbURI } = require('../config/environment');
+const moment = require('moment');
 
 mongoose.Promise = require('bluebird');
 mongoose.connect(dbURI);
@@ -11,8 +12,8 @@ Event.collection.drop();
 Event
   .create([{
     title: 'Glastonbury Festival',
-    dateFrom: 21-06-2017,
-    dateTo: 26-06-2017,
+    dateFrom: moment('2017-06-21'),
+    dateTo: moment('2017-06-26'),
     location: 'Glastonbury',
     description: 'A weekend to remember!'
   }])

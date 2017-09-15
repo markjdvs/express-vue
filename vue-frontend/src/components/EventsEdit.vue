@@ -58,7 +58,7 @@
           this.$router.push({
             name: 'events-show',
             params: {
-              eventId: eventId
+              eventId
             }
           })
         } catch (err) {

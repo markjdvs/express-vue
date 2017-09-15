@@ -1,4 +1,5 @@
 const Event = require('../models/event');
+const moment = require('moment');
 
 function eventsIndex(req, res, next) {
   Event

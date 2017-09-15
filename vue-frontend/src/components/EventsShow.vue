@@ -2,8 +2,7 @@
   <div>
     {{ event.title }}
     <p>
-      {{ event.dateFrom }}
-      {{ event.dateTo }}
+      {{ event.dateFrom | moment }} - {{ event.dateTo | moment }}
     </p>
     <p>
       {{ event.location }}
@@ -26,20 +25,25 @@
 
 <script>
   import EventsService from '../services/EventsService';
+  import moment from 'moment';
 
   export default {
-
     data () {
       return {
         event: {}
       }
     },
-
     async mounted () {
       const eventId = this.$route.params.eventId;
       this.event = (await EventsService.show(eventId)).data;
+    },
+    filters: {
+      moment: function (date) {
+        return moment(date).format('MMMM Do YYYY');
+      }
     }
-  }
+}
+
 </script>
 
 <style scoped>
