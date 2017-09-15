@@ -2,12 +2,12 @@
   <div>
 
     <router-link :to="{ name: 'events-new'}">
-      <button>
+      <button class="addEventNav">
         +
       </button>
     </router-link>
 
-    <div v-for="event in events" :key="event.id">
+    <div class="eventCard container" v-for="event in events" :key="event.id">
 
       <h4>
         {{ event.title }}
@@ -48,5 +48,27 @@
 </script>
 
 <style scoped>
+  .addEventNav {
+    color: #fff;
+    font-size: 25px;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    background: #7dd2b4;
+  }
 
+  .eventCard {
+    width: 50%;
+    border-radius: 10px;
+    padding: 10px;
+    &.past {
+
+    }
+    &.soon {
+
+    }
+    &.future {
+
+    }
+  }
 </style>
