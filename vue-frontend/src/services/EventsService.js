@@ -9,5 +9,8 @@ export default {
   },
   post (event) {
     return Api().post('events', event);
+  },
+  put (event) {
+    return Api().put(`events/${event._id}`, event);
   }
 };

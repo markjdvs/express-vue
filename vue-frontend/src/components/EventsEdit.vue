@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Add an Event</h1>
+    <h1>Update an Event</h1>
 
     <input
       type="text"
@@ -31,7 +31,7 @@
       v-model="event.description"
       placeholder="Event Description">
     </textarea>
-    <button @click="addEvent">Create</button>
+    <button @click="updateEvent">Update</button>
   </div>
 </template>
 
@@ -42,25 +42,36 @@
     data () {
       return {
         event: {
-          title: '',
-          dateFrom: '',
-          dateTo: '',
-          location: '',
-          description: ''
-        },
-        events: []
+          title: null,
+          dateFrom: null,
+          dateTo: null,
+          location: null,
+          description: null
+        }
       }
     },
     methods: {
-      async addEvent () {
+      async updateEvent () {
+        const eventId = this.$route.params.eventId;
         try {
-          await EventsService.post(this.event);
+          await EventsService.put(this.event);
           this.$router.push({
-            name: 'events'
+            name: 'events-show',
+            params: {
+              eventId: eventId
+            }
           })
         } catch (err) {
           console.log(err);
         }
+      }
+    },
+    async mounted () {
+      try {
+        const eventId = this.$route.params.eventId;
+        this.event = (await EventsService.show(eventId)).data;
+      } catch (err) {
+        console.log(err);
       }
     }
   }

@@ -1,6 +1,26 @@
 <template>
   <div>
-    {{event.title}}
+    {{ event.title }}
+    <p>
+      {{ event.dateFrom }}
+      {{ event.dateTo }}
+    </p>
+    <p>
+      {{ event.location }}
+    </p>
+    <p>
+      {{ event.description }}
+    </p>
+    <router-link
+      :to="{
+        name: 'events-edit',
+        params: {
+          eventId: event._id
+        }
+      }">
+      <button>Edit</button>
+    </router-link>
+
   </div>
 </template>
 
@@ -11,7 +31,7 @@
 
     data () {
       return {
-        event: null
+        event: {}
       }
     },
 
