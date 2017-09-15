@@ -1,8 +1,8 @@
 const routes = require('express').Router();
 
-routes.get('/', (req,res) => {
+routes.post('/register', (req,res) => {
   res.send({
-    message: 'Node server working!'
+    message: `Hi ${req.body.email}, you've been registered.`
   });
 });
 
