@@ -12,4 +12,10 @@ routes.post('/register', (req,res) => {
   });
 });
 
+// routes.post('/events/new', (req, res) => {
+//   res.send({
+//     message: `${req.body.event.title}`
+//   });
+// });
+
 module.exports = routes;

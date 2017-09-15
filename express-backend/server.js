@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
 // const cors = require('cors');
 const { port, env, dbURI } = require('./config/environment');
 const routes = require('./config/routes');
