@@ -1,18 +1,31 @@
 <template>
   <div>
-    <router-link :to="{name: 'eventsNew'}">
+
+    <router-link :to="{ name: 'events-new'}">
       <button>
         +
       </button>
     </router-link>
-    <a href="" v-for="event in events">
+
+    <div v-for="event in events" :key="event.id">
+
       <h4>
         {{ event.title }}
       </h4>
+
       <p v-if="event.description">{{ event.description }}</p>
 
-      <button @click="deleteEvent($index)">Delete</button>
-    </a>
+      <router-link
+        :to="{
+          name: 'events-show',
+          params: {
+            eventId: event._id
+          }
+        }">
+        <button>View</button>
+      </router-link>
+
+    </div>
   </div>
 </template>
 
