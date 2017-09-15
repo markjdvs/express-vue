@@ -26,8 +26,34 @@ function eventsShow(req, res, next) {
     .catch(next);
 }
 
+function eventsUpdate(req, res, next) {
+  Event
+    .findById(req.params.id)
+    .exec()
+    .then((event) => {
+      Object.assign(event, req.body);
+      return event.save();
+    })
+    .then((event) => res.json(event))
+    .catch(next);
+}
+
+function eventsDelete(req, res, next) {
+  Event
+    .findById(req.params.id)
+    .exec()
+    .then((event) => {
+      if(!event) return res.status(404);
+      return event.remove();
+    })
+    .then(() => res.status(204).end())
+    .catch(next);
+}
+
 module.exports = {
   index: eventsIndex,
   new: eventsNew,
-  show: eventsShow
+  show: eventsShow,
+  update: eventsUpdate,
+  delete: eventsDelete
 };

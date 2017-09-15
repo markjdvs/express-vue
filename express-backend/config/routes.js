@@ -6,6 +6,8 @@ router.route('/events')
   .post(events.new);
 
 router.route('/events/:id')
-  .get(events.show);
+  .get(events.show)
+  .put(events.update)
+  .delete(events.delete);
 
 module.exports = router;
