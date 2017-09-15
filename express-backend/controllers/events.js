@@ -15,7 +15,19 @@ function eventsNew(req, res, next) {
     .catch(next);
 }
 
+function eventsShow(req, res, next) {
+  Event
+    .findById(req.params.id)
+    .exec()
+    .then((event) => {
+      if(!event) return res.status(404);
+      res.json(event);
+    })
+    .catch(next);
+}
+
 module.exports = {
   index: eventsIndex,
-  new: eventsNew
+  new: eventsNew,
+  show: eventsShow
 };
