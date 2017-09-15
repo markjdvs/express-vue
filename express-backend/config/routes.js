@@ -10,4 +10,6 @@ router.route('/events/:id')
   .put(events.update)
   .delete(events.delete);
 
+router.all('/*', (req, res) => res.status(404));
+
 module.exports = router;
