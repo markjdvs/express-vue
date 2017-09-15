@@ -1,21 +1,8 @@
-const routes = require('express').Router();
+const router = require('express').Router();
+const events = require('../controllers/events');
 
-routes.get('/', (req,res) => {
-  res.send({
-    message: `Splashpage`
-  });
-});
+router.route('/events')
+  .get(events.index)
+  .post(events.new);
 
-routes.post('/register', (req,res) => {
-  res.send({
-    message: `Hi ${req.body.email}, you've been registered.`
-  });
-});
-
-// routes.post('/events/new', (req, res) => {
-//   res.send({
-//     message: `${req.body.event.title}`
-//   });
-// });
-
-module.exports = routes;
+module.exports = router;
