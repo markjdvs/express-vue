@@ -7,7 +7,7 @@
       </button>
     </router-link>
 
-    <div class="eventCard container" v-bind:class="{}" v-for="event in events" :key="event.id">
+    <div class="eventCard container" v-for="event in events" :key="event.id">
 
       <h4>
         {{ event.title }}
@@ -37,7 +37,6 @@
   import EventsService from '../services/EventsService';
   import moment from 'moment';
 
-
   export default {
     data () {
       return {
@@ -53,7 +52,15 @@
       moment: function (date) {
         return moment(date).format('MMMM Do YYYY');
       }
-    }
+    },
+    computed: {
+      sortedEvents: function() {
+        this.events.sort( (a, b) => {
+            return new Date(a.dateFrom) - new Date(b.dateFrom);
+        });
+        return this.events;
+      }
+}
   }
 </script>
 
@@ -80,9 +87,6 @@
     }
     &.soon {
       background-color: green;
-    }
-    &.future {
-      background-color: grey;
     }
   }
 </style>
