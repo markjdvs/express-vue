@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a href="#"v-for="event in events">
+    <a href="#" v-for="event in events">
       <h4>
         {{ event.title }}
       </h4>
@@ -17,13 +17,14 @@
 
   export default {
     data () {
-      events: null
+      return {
+        events: []
+      }
     },
     methods: {
-
     },
     async mounted () {
-      this.events = await EventsService.index();
+      this.events = (await EventsService.index()).data;
     }
   }
 </script>
