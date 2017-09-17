@@ -1,17 +1,23 @@
 <template>
-  <main>
-    <div id="app">
+  <div id="app">
+    <app-header />
+    <main>
       <router-view></router-view>
-    </div>
-  </main>
+    </main>
+  </div>
 </template>
 
 <script>
+import AppHeader from './components/Header.vue';
+
 export default {
   name: 'app',
   data () {
     return {
     }
+  },
+  components: {
+    AppHeader
   }
 }
 </script>
@@ -47,8 +53,8 @@ a {
 }
 
 nav {
-  padding: 10px 0 10px 30px;
+  padding: 10px;
+  
 }
-
 
 </style>
