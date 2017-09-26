@@ -54,7 +54,6 @@ a {
 
 nav {
   padding: 10px;
-  
 }
 
 </style>

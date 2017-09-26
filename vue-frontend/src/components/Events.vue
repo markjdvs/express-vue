@@ -8,6 +8,7 @@
     </router-link>
 
     <div class="eventCard container" v-for="event in events" :key="event.id">
+    <!-- <div class="eventCard container" v-bind:class="{ upcoming: isUpcoming }" v-for="event in events" :key="event.id"> -->
 
       <h4>
         {{ event.title }}
@@ -54,13 +55,22 @@
       }
     },
     computed: {
+
       sortedEvents: function() {
-        this.events.sort( (a, b) => {
-            return new Date(a.dateFrom) - new Date(b.dateFrom);
-        });
-        return this.events;
+        function compare(firstEvent, secondEvent) {
+          firstEvent = new Date(firstEvent.dateFrom);
+          secondEvent = new Date(secondEvent.dateFrom);
+          console.log(firstEvent);
+          console.log(secondEvent);
+          console.log(firstEvent < secondEvent);
+          if (firstEvent < secondEvent) return -1;
+          if (firstEvent > secondEvent) return 1;
+          return 0;
+        }
+        return this.events.sort(compare);
       }
-}
+
+    }
   }
 </script>
 
@@ -85,7 +95,7 @@
     &.past {
       background-color: red;
     }
-    &.soon {
+    &.upcoming {
       background-color: green;
     }
   }
